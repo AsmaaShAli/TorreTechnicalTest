@@ -23,8 +23,23 @@
         <div class="content">
             <div v-if="activetab === 1" class="tabcontent">
                 <div id="search-container">
-                    <input type="text" placeholder="Enter search for people" id="search-text">
-                    <button type="button" id="search-btn">Search Torre</button>
+                    <div class="search-div">
+                        <div class="search-codition">
+                            <input type="checkbox" id="aggregate-checkbox" v-model="aggregate">
+                            <label class="condition-label" for="aggregateCheckbox">Aggregate</label>
+                        </div>
+                        <div class="search-codition">
+                            <label class="condition-label" for="size-condition">Size</label>
+                            <input class="search-input" type="number" id="size-condition" min="0" v-model="size">
+                        </div>
+                        <div class="search-codition">
+                            <label class="condition-label" for="Offset-condition">Offset</label>
+                            <input class="search-input" type="number" id="Offset-condition" min="0" v-model="offset">
+                        </div>
+                    </div>
+                    <div class="search-div">
+                        <button type="button" id="search-btn">Search People</button>
+                    </div>
                 </div>
                 <div id="result-container" v-if="results.length > 0">
                     <div class="result" v-for="(result,index) in results" :key="index">
@@ -35,8 +50,8 @@
 
             <div v-if="activetab === 2" class="tabcontent">
                 <div id="search-container">
-                    <input type="text" placeholder="search for opportunities" id="search-text">
-                    <button type="button" id="search-btn">Search Torre</button>
+                    <input type="text" placeholder="search for opportunities" id="search-text" v-model='searchTerm'>
+                    <button type="button" id="search-btn">Search opportunities</button>
                 </div>
                 <div id="result-container" v-if="results.length > 0">
                     <div class="result" v-for="(result,index) in results" :key="index">
