@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Responsive + Encoding Meta Tag -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheet -->
+    <link href="styles.css" rel="stylesheet">
+    <!-- Title -->
+    <title>Search - Torre API</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+
+<body>
+    <div id="tabs" class="container">
+
+        <div class="tabs">
+            <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">People</a>
+            <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]">Opportunities</a>
+        </div>
+
+        <div class="content">
+            <div v-if="activetab === 1" class="tabcontent">
+                <div id="search-container">
+                    <input type="text" placeholder="Enter search for people" id="search-text">
+                    <button type="button" id="search-btn">Search Torre</button>
+                </div>
+                <div id="result-container" v-if="results.length > 0">
+                    <div class="result" v-for="(result,index) in results" :key="index">
+                        <img :src="result.image" class="prop-img">
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="activetab === 2" class="tabcontent">
+                <div id="search-container">
+                    <input type="text" placeholder="search for opportunities" id="search-text">
+                    <button type="button" id="search-btn">Search Torre</button>
+                </div>
+                <div id="result-container" v-if="results.length > 0">
+                    <div class="result" v-for="(result,index) in results" :key="index">
+                        <img :src="result.image" class="prop-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+<!-- Vue and Custom JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="scripts.js"></script>
+
+</html>
