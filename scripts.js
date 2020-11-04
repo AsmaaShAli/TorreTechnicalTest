@@ -43,12 +43,13 @@ const app = new Vue({
                 aggregate: this.aggregate
             };
             this.responseAvailable = false;
-            axios.post('https://search.torre.co/opportunities/_search/?offset=' + _this.offset + '&size=' + _this.size + '&aggregate=' + _this.aggregate)
+            axios.post('https://search.torre.co/opportunities/_search/?offset=' + this.offset + '&size=' + this.size + '&aggregate=' + this.aggregate)
                 .then(response => {
                     return response;
                 })
                 .then(response => {
                     this.results = response.data.results;
+                    console.log(this.results);
                     this.responseAvailable = true;
                     this.buttonClicked = false;
                 })

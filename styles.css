@@ -159,4 +159,18 @@ h1,h2,h3,h4,h5,h6,p {
     text-align: center;
   }
 
+  .rectangle {
+    display: inline-block;
+    padding: 3px;
+    margin: 5px;
+    border: #2c3e50 solid 1px;
+  }
   
+  .circle {
+    margin: 1px;
+    height: 33px;
+    width: 33px;
+    border-radius: 50%;
+    border: #484848 solid 1px;
+  }
+

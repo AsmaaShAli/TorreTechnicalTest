@@ -47,11 +47,10 @@
                     </div>
                 </div>
                 <div id="result-container" v-if="results.length > 0 && responseAvailable">
-                    <div class="result-item" v-for="item in results" :key="item.username">
+                    <div class="result-item" v-for="(item,index)  in results" :key="item.username">
                         <div class="card mb-3" style="max-width: 540px; margin: auto;">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <input hidden value=item.picture />
                                     <img :src="item.picture" class=" card-img" alt="User image"
                                         style="border-radius: 20%;" />
 
@@ -75,7 +74,7 @@
                 </div>
                 <div id="result-container" v-if="results.length == 0 && responseAvailable">
                     <b>
-                        <p> you should have size for more than 0 ... </p>
+                        <p> you should have size value for more than 0 ... </p>
                     </b>
                 </div>
             </div>
@@ -98,13 +97,54 @@
                     </div>
                     <div class="search-div">
                         <button type="button" id="search-btn" @click="searchTorreOpportunities">Search
-                            Opportunities</button>
+                            Opportunities
+                            <i v-if="buttonClicked && !responseAvailable"
+                                class="fas fa-circle-notch fa-spin"></i></button>
                     </div>
                 </div>
-                <div id="result-container" v-if="results.length > 0">
-                    <div class="result" v-for="(result,index) in results" :key="index">
-                        <img :src="result.image" class="prop-img">
+                <div id="result-container" v-if="results.length > 0 && responseAvailable">
+                    <div class="result-item" v-for="(item,index)  in results" :key="item.context.id">
+                        <div class="card mb-3" style="max-width: 540px; margin: auto;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img :src="item.organizations[0].picture" class=" card-img" alt="User image"
+                                        style="border-radius: 20%;" />
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{item.objective}}</h5>
+                                        <p class="card-text"> {{item.type}}
+                                        </p>
+                                        <p class="card-text"><small
+                                                class="text-muted">{{item.organizations[0].name}}</small>
+                                        </p>
+                                        <p class="card-text"><b> {{item.locations[0]}}</b>
+                                        </p>
+                                        <span class="card-text"><b>team members:</b></span>
+                                        <span v-for="member in item.members">
+                                            <img v-if="member.picture != null" class="circle" :src="member.picture"
+                                                alt="member image" data-toggle="tooltip" data-placement="right"
+                                                :title="member.name" />
+                                            <img v-if="member.picture == null" class="circle" src="pictures/blank.jpg"
+                                                alt="member image" data-toggle="tooltip" data-placement="right"
+                                                :title="member.name" />
+                                            </button>
+
+                                        </span>
+                                        <div style="width: 100%;">
+                                            <b>Skills: </b> <span v-for="skill in item.skills"
+                                                class="rectangle">{{skill.name}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div id="result-container" v-if="results.length == 0 && responseAvailable">
+                    <b>
+                        <p> you should have size value for more than 0 ... </p>
+                    </b>
                 </div>
             </div>
         </div>
