@@ -1,4 +1,5 @@
 
+
 const app = new Vue({
     el: '#tabs',
     data: {
@@ -7,6 +8,7 @@ const app = new Vue({
         offset: 0,
         activetab: 1,
         results: [],
+        userData: [],
         buttonClicked: false,
         responseAvailable: false
     },
@@ -56,6 +58,33 @@ const app = new Vue({
                 .catch(err => {
                     console.log(err);
                 });
+        },
+        openBio(username) {
+            debugger;
+            axios.get('https://torre.bio/api/bios/' + username, {
+                method: 'GET',
+                mode: 'no-cors',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Headers': 'content-type',
+                    'Access-Control-Allow-Methods': "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+                },
+                withCredentials: true,
+                credentials: 'same-origin',
+                crossdomain: true
+            })
+                .then(response => {
+                    return response;
+                })
+                .then(response => {
+                    this.userData = response.data.results;
+                    console.log(this.userData);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+
         }
     }
 })
