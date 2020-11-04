@@ -85,6 +85,15 @@ const app = new Vue({
                     console.log(err);
                 });
 
+        },
+        resetResults() {
+            if (this.results.length > 0)
+                this.results = [];
+            this.aggregate = false;
+            this.size = 0;
+            this.offset = 0;
+            this.responseAvailable = false;
+            this.buttonClicked = false;
         }
     }
 })

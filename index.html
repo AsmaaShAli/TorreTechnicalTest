@@ -19,8 +19,10 @@
     <div id="tabs" class="container">
 
         <div class="tabs">
-            <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">People</a>
-            <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]">Opportunities</a>
+            <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]"
+                @click="resetResults">People</a>
+            <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]"
+                @click="resetResults">Opportunities</a>
         </div>
 
         <div class="content">
@@ -46,7 +48,7 @@
                                 class="fas fa-circle-notch fa-spin"></i></button>
                     </div>
                 </div>
-                <div id="result-container" v-if="results.length > 0 && responseAvailable && activetab==1">
+                <div id="result-container" v-if="results.length > 0 && responseAvailable && activetab===1">
                     <div class="result-item" v-for="(item,index)  in results">
                         <div class="card mb-3" style="max-width: 540px; margin: auto;">
                             <div class="row no-gutters">
@@ -72,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="result-container" v-if="results.length == 0 && responseAvailable && activetab==1">
+                <div id="result-container" v-if="results.length == 0 && responseAvailable && activetab===1">
                     <b>
                         <p> you should have size value for more than 0 ... </p>
                     </b>
@@ -102,7 +104,7 @@
                                 class="fas fa-circle-notch fa-spin"></i></button>
                     </div>
                 </div>
-                <div id="result-container" v-if="results.length > 0 && responseAvailable && activetab==2">
+                <div id="result-container" v-if="results.length > 0 && responseAvailable && activetab===2">
                     <div class="result-item" v-for="(item,index)  in results" :key="item.context.id">
                         <div class="card mb-3" style="max-width: 540px; margin: auto;">
                             <div class="row no-gutters">
@@ -141,7 +143,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="result-container" v-if="results.length == 0 && responseAvailable && activetab==2">
+                <div id="result-container" v-if="results.length == 0 && responseAvailable && activetab===2">
                     <b>
                         <p> you should have size value for more than 0 ... </p>
                     </b>
