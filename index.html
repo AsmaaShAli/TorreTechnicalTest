@@ -47,20 +47,26 @@
                     </div>
                 </div>
                 <div id="result-container" v-if="results.length > 0 && responseAvailable">
-                    <div v-for="item in results" :key="item.username">
-                        <div class="card mb-3" style="max-width: 540px;">
+                    <div class="result-item" v-for="item in results" :key="item.username">
+                        <div class="card mb-3" style="max-width: 540px; margin: auto;">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="..." class="card-img" alt="...">
+                                    <input hidden value=item.picture />
+                                    <img :src="item.picture" class=" card-img" alt="User image"
+                                        style="border-radius: 20%;" />
+
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a
-                                            natural lead-in to additional content. This content is a little bit longer.
+                                        <h5 class="card-title">{{item.name}}</h5>
+                                        <p class="card-text"> {{item.professionalHeadline}}
                                         </p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
+                                        <p class="card-text"><small class="text-muted">{{item.locationName}}</small>
                                         </p>
+                                        <span class="card-text"><b>open to:</b></span>
+                                        <span v-for="open in item.openTo">
+                                            <i> {{open}}</i> <b>,</b>
+                                        </span>
                                     </div>
                                 </div>
                             </div>

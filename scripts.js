@@ -26,6 +26,7 @@ const app = new Vue({
                 })
                 .then(response => {
                     this.results = response.data.results;
+                    console.log(this.results);
                     this.responseAvailable = true;
                     this.buttonClicked = false;
                 })
