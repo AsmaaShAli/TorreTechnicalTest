@@ -46,7 +46,7 @@
                                 class="fas fa-circle-notch fa-spin"></i></button>
                     </div>
                 </div>
-                <div id="result-container" v-if="results.length > 0 && responseAvailable">
+                <div id="result-container" v-if="results.length > 0 && responseAvailable && activetab==1">
                     <div class="result-item" v-for="(item,index)  in results">
                         <div class="card mb-3" style="max-width: 540px; margin: auto;">
                             <div class="row no-gutters">
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="result-container" v-if="results.length == 0 && responseAvailable">
+                <div id="result-container" v-if="results.length == 0 && responseAvailable && activetab=2">
                     <b>
                         <p> you should have size value for more than 0 ... </p>
                     </b>
